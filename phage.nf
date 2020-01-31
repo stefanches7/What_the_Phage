@@ -94,6 +94,7 @@ println " "}
     include './modules/r_plot.nf' params(output: params.output)
     include './modules/r_plot_reads.nf' params(output: params.output)
     include './modules/removeSmallReads' params(output: params.output)
+    include './modules/removeSmallContigs' params(output: params.output)
     include './modules/samtools' params(output: params.output)
     include './modules/shuffle_reads_nts' params(output: params.output)
     include './modules/sourmash' params(output: params.output)
@@ -357,8 +358,8 @@ workflow {
         filter_tool_names(results) 
                            
     //plotting results
-        r_plot(filter_tool_names.out)
-        upsetr_plot(filter_tool_names.out)
+        //r_plot(filter_tool_names.out)
+        upsetr_plot(filter_tool_names.out, file(params.virify))
     //samtools 
        samtools(fasta_validation_wf.out.join((filter_tool_names.out)))    
     }
@@ -408,6 +409,7 @@ def helpMSG() {
     ${c_yellow}Input:${c_reset}
     ${c_green} --fasta ${c_reset}            '*.fasta'   -> assembly file(s)
     ${c_green} --fastq ${c_reset}            '*.fastq'   -> long read file(s)
+    ${c_green} --virify ${c_reset}           '*.txt'     -> output of the VIRify pipeline for comparison and plotting
     ${c_dim}  ..change above input to csv:${c_reset} ${c_green}--list ${c_reset}            
 
     ${c_yellow}Options:${c_reset}
