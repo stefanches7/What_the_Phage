@@ -4,6 +4,7 @@ process upsetr_plot {
       errorStrategy{task.exitStatus=1 ?'ignore':'terminate'}
     input:
       tuple val(name), file(files)
+      file(virify)
     output:
       tuple val(name), file("upsetr.svg")
     script:
