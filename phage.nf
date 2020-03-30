@@ -591,6 +591,8 @@ def helpMSG() {
     --vn                deactivates virnet
     --vs                deactivates virsorter
 
+    --anno              deactivate Annotation
+
     ${c_yellow}Database behaviour:${c_reset}
     This workflow will automatically download files to ./nextflow-autodownload-databases
     It will skip this download if the files are present in ./nextflow-autodownload-databases

@@ -26,7 +26,7 @@ process input_suffix_check {
         # tr whitespace at the end of lines
         sed 's/[[:blank:]]*\$//' -i ${name}.fa
         # remove ' and "
-        tr -d "'"  < ${name}.fa | tr -d '"' | tr -d "[]" > tmp.file && mv tmp.file ${name}.fa
+        tr -d "'"  < ${name}.fa | tr -d '"' | tr -d "[]" | tr -d "\r" > tmp.file && mv tmp.file ${name}.fa
         # replace ( ) | . , / and whitespace with _
         sed 's#[()|.,/ ]#_#g' -i ${name}.fa
         # remove empty lines

@@ -15,6 +15,7 @@
 * **this tool is currently under heavy development, so expect some bugs but feel free to report issues**
 * a save bet is to use release or pre release candidates via `-r releasenumber` e.g. `-r v0.5`
   * these are tested
+  * releases can be found [here](https://github.com/replikation/What_the_Phage/releases)
 
 ## What is this Repo?
 
@@ -102,6 +103,7 @@ nextflow run replikation/What_the_Phage -r v0.5 --fasta ~/.nextflow/assets/repli
 ```
 
 * or execute it directly via a release candidate ( `-r releasenumber` , e.g. `-r v0.5`)
+
 
 ```bash
 nextflow run replikation/What_the_Phage -r v0.5 --fasta 'your-fasta-files/*.fa'
