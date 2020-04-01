@@ -126,6 +126,7 @@ println " "}
     include vog_DB from './modules/databases/download_vog_DB'
     include chromomap_parser from './modules/parser/chromomap_parser'
     include chromomap from './modules/chromomap'
+    include seqkit from './modules/lenght_filter'
 
 
 /************* 
@@ -277,9 +278,16 @@ workflow vog_database {
 *************/
 workflow fasta_validation_wf {
     take:    fasta
-    main:   input_suffix_check(fasta)
-    emit:   input_suffix_check.out
+            // filter input sequences above 1500 bp after suffix check with seqkit
+    main:   seqkit(input_suffix_check(fasta))
+    emit:   seqkit.out
 }
+
+// workflow lenght_filter {
+//     take:    fasta
+//     main:   seqkit(fasta)
+//     emit:   input_suffix_check.out
+// }
 
 workflow read_validation_wf {
     take:    fastq
